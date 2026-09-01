@@ -1,0 +1,21 @@
+import React, { useState } from 'react';
+
+export default function LoginToggle() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  return (
+    <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px', maxWidth: '300px' }}>
+      {isLoggedIn ? (
+        <div>
+          <h3>Welcome back, Student!</h3>
+          <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+        </div>
+      ) : (
+        <div>
+          <h3>Please log in</h3>
+          <button onClick={() => setIsLoggedIn(true)}>Login</button>
+        </div>
+      )}
+    </div>
+  );
+}

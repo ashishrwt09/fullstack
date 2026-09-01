@@ -1,0 +1,42 @@
+import React, { useState } from 'react';
+
+const INITIAL_NAMES = [
+  'Aarav Sharma',
+  'Ananya Verma',
+  'Divyanshu Rawat',
+  'Ishaan Gupta',
+  'Pooja Negi',
+  'Rohan Mehta',
+  'Siddharth Joshi',
+  'Tanvi Chauhan'
+];
+
+export default function SearchFilter() {
+  const [query, setQuery] = useState('');
+
+  const filteredNames = INITIAL_NAMES.filter(name =>
+    name.toLowerCase().includes(query.toLowerCase().trim())
+  );
+
+  return (
+    <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px', maxWidth: '350px' }}>
+      <h3>Student Directory</h3>
+      <input
+        type="text"
+        placeholder="Search names..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        style={{ width: '100%', marginBottom: '12px', boxSizing: 'border-box' }}
+      />
+      {filteredNames.length > 0 ? (
+        <ul style={{ paddingLeft: '20px' }}>
+          {filteredNames.map((name, index) => (
+            <li key={index}>{name}</li>
+          ))}
+        </ul>
+      ) : (
+        <p style={{ color: '#888' }}>No results found</p>
+      )}
+    </div>
+  );
+}
